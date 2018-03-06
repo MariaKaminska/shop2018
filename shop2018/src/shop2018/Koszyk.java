@@ -1,15 +1,40 @@
 package shop2018;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Student
- */
-public class Koszyk {
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+ 
+ 
+ public class Koszyk {
+    private Map<Produkt,Integer> lista = new HashMap<>();
+     
+    public void dodaj(Produkt p)
+    {
+        if(lista.containsKey(p)){
+            Integer i=lista.get(p)+1;
+            lista.put(p, i);
+        }
+        else{
+            lista.put(p,1);
+        }
+    }
+     
+    public BigDecimal doZaplaty()
+    {
+        BigDecimal sum = new BigDecimal("0");
+        for(Produkt p : lista.keySet())
+        {
+            int ilosc=lista.get(p);
+            sum=sum.add(p.getCena().multiply(new BigDecimal(ilosc)));
+        }
+        return sum;
+    }
     
-}
+    public String toString()
+        {
+            return lista.toString()+": "+doZaplaty(); 
+        }
+    }
+ 
