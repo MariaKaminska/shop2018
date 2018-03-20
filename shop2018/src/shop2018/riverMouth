@@ -1,0 +1,76 @@
+
+package RiversAndSeas;
+
+import java.util.*;
+
+/**
+ *
+ * @author Maria Kamińska 
+ */
+public class riverMouth {
+    
+    public static void main(String args[]){
+        
+        River wisla=new River("Wisła",1047.);
+        River tay=new River("Tay",193.);
+        River izera=new River("Izera",164.6);
+        River odra=new River("Odra",854.3);
+        River dunaj=new River("Dunaj",2845.);
+        River dniestr=new River("Dniestr",1352.);
+        
+        Sea baltyk=new Sea("Morze Bałtyckie",415266.);
+        Sea polnocne=new Sea("Morze Północne",565000.);
+        Sea czarne=new Sea("Morze Czarne",422000.);
+        
+        HashMap<Sea,List<River>> map=new HashMap();
+        List<River> mb=new ArrayList();
+        mb.add(wisla);
+        mb.add(odra);
+        List<River> mp=new ArrayList();
+        mp.add(tay);
+        mp.add(izera);
+        List<River> mc=new ArrayList();
+        mc.add(dunaj);
+        mc.add(dniestr);
+        
+        map.put(baltyk, mb);
+        map.put(polnocne, mp);
+        map.put(czarne, mc);
+        
+        Collection <Sea> col=map.keySet();
+        Random random=new Random();
+        int i=random.nextInt(col.size());
+        Iterator<Sea> iterator=col.iterator();
+        Sea sea=null;
+        int l=0;
+        while(iterator.hasNext()){
+           
+            sea=iterator.next();
+            System.out.println(i+" "+l+" "+sea);
+            if(l==i)
+                break;
+            l++;
+        }
+      
+        List<River> river=map.get(sea);
+        System.out.println(sea);
+        
+        River longest=river.get(0);
+        River shortest=river.get(0);
+        
+        for(River riv:river){
+            if(riv.getLength()>longest.getLength()){  
+                longest=riv;
+            }
+            
+        }
+        
+        System.out.println("najdłuższa rzeka: "+longest);
+        
+        TreeSet<River> riverTree=new TreeSet();
+        
+        
+        
+    }
+    
+}
