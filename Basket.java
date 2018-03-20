@@ -7,7 +7,7 @@ import java.util.Map;
 
 
 public class Basket {
-    private Map<Product, Integer> list = new HashMap();
+    private Map<Product, Integer> list = new HashMap<>();
     public void dodaj(Product p) {
         if(list.containsKey(p)) {
         int integ = list.get(p);
@@ -24,7 +24,24 @@ public class Basket {
         }
         return sum;
     }
+    public int getCount(Product p){
+    	return list.get(p);
+    }
+    public Collection <Product> getItems(){
+    	return list.keySet();
+    }
+    public void add(Product p) {
+    	
+    	if(list.containsKey(p)) {
+    		int integ=list.get(p);
+    		list.put(p, integ++);
+    	}
+    	else
+    		list.put(p, 1);
+    }
+    
     @Override
+    
     public String toString() {
         StringBuilder s = new StringBuilder();
         for(Product p: list.keySet()){
