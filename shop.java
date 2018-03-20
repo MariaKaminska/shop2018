@@ -22,5 +22,8 @@ public class shop {
         System.out.println(w);
         w.doOrder(k);
         System.out.println(w);
+        w.getItems("sour cream").setCount(0);
+        System.out.println(w.productsAvailable());
+        System.out.println(w.getItems("gds"));
     }
 }
