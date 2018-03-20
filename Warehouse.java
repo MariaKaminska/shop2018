@@ -20,9 +20,13 @@ public class Warehouse {
     private List<Product> products=new ArrayList<Product>();
     
     
-    public Collection<Product> productsAvailable(){ //Praca domowa! Zwraca produkty, kótrych jest więcej niż 0
-        Collection <Product> p=new ArrayList<>();
-    	return p;
+    public Collection<Product> productsAvailable(){ //Praca domowa! Zwraca produkty, kĂłtrych jest wiÄ™cej niĹĽ 0
+    	
+    	TreeSet<Product> set = new TreeSet<>();
+        for(Product pr: products)
+            if(pr.getCount()>0)
+                set.add(pr);
+        return set;
     }
     
     public Warehouse()
@@ -37,20 +41,35 @@ public class Warehouse {
     
     public Collection<Product> productsSortedByName(){
         
-        TreeSet set=new TreeSet();
+        TreeSet<Product> set=new TreeSet<>();
         set.addAll(products);
         return set;
     }
     
     public Collection<Product> productsSortedByPrice(){
-        PriceComparator c=new PriceComparator();
-        TreeSet<Product> set=new TreeSet(c);
+    	
+        TreeSet<Product> set=new TreeSet<>(new PriceComparator());
         set.addAll(products);
         return set;
     }   
     
     public void doOrder(Basket basket){
         
+    	for(Product p:basket.getItems()) {
+    		for(Product p1:products) {
+    			if(p1.getName().equals(p.getName()))
+    				p1.addStock(basket.getCount(p));
+    		}
+    	}
+    }
+    
+    public Product getItems(String s) {
+    	
+    	for(Product p:products) {
+    		if(p.getName().equals(s))
+    			return p;
+    	}
+    	return new Product("/n",new BigDecimal("0"));
     }
     
     public String toString(){
