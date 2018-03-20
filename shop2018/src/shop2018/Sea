@@ -1,0 +1,34 @@
+
+package RiversAndSeas;
+
+/**
+ *
+ * @author Maria Kamińska
+ */
+public class Sea {
+    
+    private String name;
+    private Double area;
+    
+    public Sea(String name, Double area)
+    {
+        this.name=name;
+        this.area=area;
+    }
+    
+    @Override
+    
+    public String toString(){
+        
+        return name+" - "+area+" square kilometres";
+    }
+    public boolean equals(Sea sea){
+        
+        return name.equals(sea.name);
+    }
+    public Double getArea(){
+        
+        return area;
+    }
+    
+}
