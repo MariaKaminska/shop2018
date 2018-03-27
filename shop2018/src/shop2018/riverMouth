@@ -22,14 +22,14 @@ public class riverMouth {
         Sea polnocne=new Sea("Morze Północne",565000.);
         Sea czarne=new Sea("Morze Czarne",422000.);
         
-        HashMap<Sea,List<River>> map=new HashMap();
-        List<River> mb=new ArrayList();
+        HashMap<Sea,List<River>> map=new HashMap<>();
+        List<River> mb=new ArrayList<>();
         mb.add(wisla);
         mb.add(odra);
-        List<River> mp=new ArrayList();
+        List<River> mp=new ArrayList<>();
         mp.add(tay);
         mp.add(izera);
-        List<River> mc=new ArrayList();
+        List<River> mc=new ArrayList<>();
         mc.add(dunaj);
         mc.add(dniestr);
         
@@ -56,20 +56,42 @@ public class riverMouth {
         System.out.println(sea);
         
         River longest=river.get(0);
-        River shortest=river.get(0);
         
         for(River riv:river){
             if(riv.getLength()>longest.getLength()){  
                 longest=riv;
             }
-            
         }
         
         System.out.println("najdłuższa rzeka: "+longest);
         
-        TreeSet<River> riverTree=new TreeSet();
+        TreeSet<River> set=new TreeSet<>();
+        for(Sea s:map.keySet()) {
+        	List<River> list=map.get(s);
+        	set.addAll(list);
+        }
         
+        System.out.println(set);
         
+        TreeSet<River> set2;
+        
+        set2=new TreeSet<River>(
+        		new Comparator<River>() {
+        			@Override
+        			public int compare(River r1, River r2) {
+        				
+        				return r1.getName().compareTo(r2.getName());
+        			}
+        			
+        		}
+        );
+        
+        for(Sea s:map.keySet()) {
+        	List<River> list=map.get(s);
+        	set2.addAll(list);
+        }
+        
+        System.out.println(set2);
         
     }
     
