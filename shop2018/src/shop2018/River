@@ -5,7 +5,7 @@ package RiversAndSeas;
  *
  * @author Maria Kamińska
  */
-public class River {
+public class River implements Comparable <River>{
     
     private String name;
     private Double length;
@@ -30,5 +30,18 @@ public class River {
         
         return length;
     }
+    
+    public String getName(){
+        
+        return name;
+    }
+    
+	public int compareTo(River r2) {
+    	if(length==r2.length) return name.compareTo(r2.name);
+    	return name.compareTo(r2.name);
+    }
+
+	
+
     
 }
