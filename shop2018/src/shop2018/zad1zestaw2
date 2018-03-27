@@ -24,7 +24,7 @@ public class Kolekcje {
 		
 		System.out.println(map2);
 		
-//zad. 2. zestaw 2
+//zad. 2a zestaw 2
 
 		ArrayList<Integer> list=new ArrayList<>();
 		
@@ -36,6 +36,31 @@ public class Kolekcje {
 		list.addAll(map.values());
 		
 		System.out.println(list);
+		
+//zad. 2b zestaw 2
+		
+		HashMap<Integer, HashMap<Integer, Integer>> map3=new HashMap<>();
+		
+		for(Integer i:map.keySet()) {
+			
+			map3.put(i, map);
+		}
+		
+		System.out.println(map3);
+		
+		ArrayList<Integer> list2=new ArrayList<>();
+		
+		
+		
+		for(Integer i:map3.keySet()) {
+			
+			HashMap<Integer, Integer> map4=map3.get(i);
+			list2.addAll(map4.keySet());
+			list2.addAll(map4.values());
+		}
+		
+		list2.addAll(map3.keySet());
+		System.out.println(list2);
 		
 	}
 	
