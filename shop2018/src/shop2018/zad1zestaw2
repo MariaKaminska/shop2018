@@ -3,7 +3,9 @@ import java.util.HashMap;
 public class Kolekcje {
 
 	public static void main(String[] args) {
-		
+
+//zad. 1. zestaw 2
+
 		HashMap<Integer, Integer> map=new HashMap();
 		
 		map.put(1, 1223);
@@ -21,6 +23,19 @@ public class Kolekcje {
 		}
 		
 		System.out.println(map2);
+		
+//zad. 2. zestaw 2
+
+		ArrayList<Integer> list=new ArrayList<>();
+		
+		for(Integer i:map.keySet()) {
+			
+			list.add(i);
+		}
+		
+		list.addAll(map.values());
+		
+		System.out.println(list);
 		
 	}
 	
