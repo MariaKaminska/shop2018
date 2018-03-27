@@ -1,0 +1,27 @@
+import java.util.HashMap;
+
+public class Kolekcje {
+
+	public static void main(String[] args) {
+		
+		HashMap<Integer, Integer> map=new HashMap();
+		
+		map.put(1, 1223);
+		map.put(2, 5464);
+		map.put(3, 5332);
+		map.put(4, 2527);
+		
+		System.out.println(map);
+		
+		HashMap<Integer, Integer> map2=new HashMap();
+		
+		for(Integer i:map.keySet()) {
+			
+			map2.put(map.get(i), i);
+		}
+		
+		System.out.println(map2);
+		
+	}
+	
+}
