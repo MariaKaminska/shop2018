@@ -1,0 +1,36 @@
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Mk extends Thread{
+    private int liczba;
+    public Mk(String name, int liczba){
+        super(name);
+        this.liczba=liczba;
+    }
+   
+    public void run(){
+        for(int i=0;i<liczba;i++){
+           System.out.println(getName()); 
+            try {
+                Mk.sleep(500);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Mk.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here 
+        Mk A=new Mk("Wątek A",30); 
+        A.start();
+        Mk B=new Mk("Wątek B",40); 
+        B.start();
+        Mk C=new Mk("Wątek C",25); 
+        C.start();
+        Mk D=new Mk("Wątek D",35); 
+        D.start();
+    }
+    
+}
